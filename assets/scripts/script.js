@@ -17,10 +17,15 @@ const displayResult = document.getElementById('zone_result');
 // ***********************************************
 // - Addition
 btnAdd.addEventListener('click', () => {
+    // La valeur récuperer dans input est toujours de type "string"
+    // Il est donc necessaire de convertir avec un "parseInt / parseFloat"
     const nb1 = parseFloat(inputNb1.value);
     const nb2 = parseFloat(inputNb2.value);
+
+    // On réalise l'operation
     const res = nb1 + nb2;
 
+    // Modification du contenu de la balise "p" pour afficher le resultat
     displayResult.innerText = `L'addition entre ${nb1} et ${nb2} vaut ${res}`;
 });
 
@@ -70,10 +75,14 @@ const btnRng = document.getElementById('btn_rng');
 
 // - Division entiere
 btnIntDiv.addEventListener('click', () => {
-    const nb1 = parseFloat(inputNb1.value);
-    const nb2 = parseFloat(inputNb2.value);
+    // On converti les 2 nombres en entier
+    const nb1 = parseInt(inputNb1.value);
+    const nb2 = parseInt(inputNb2.value);
+
+    // On arrondi (vers le bas) la division
     const res = Math.floor(nb1 / nb2);
 
+    // On modifie le contenu de la balise "p" pour afficher le resultat
     displayResult.innerText = `La division entiere de ${nb1} par ${nb2} vaut ${res}`;
 });
 
@@ -85,3 +94,12 @@ btnRng.addEventListener('click', () => {
     // Nombre 2
     inputNb2.value = Math.round(Math.random() * 100);
 });
+
+// Exemple de traitement pour générer un nombre Aleatoire entre 0 et 100
+/* 
+    0.825161654345135
+    ↓ x100
+    82.5161654345135
+    ↓ round
+    83
+*/
